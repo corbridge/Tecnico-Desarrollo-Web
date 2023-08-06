@@ -1,2 +1,2 @@
 Transaccion: Deposito
-  Cantidad: 500
+  Cantidad: 100

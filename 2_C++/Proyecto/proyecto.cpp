@@ -9,7 +9,7 @@ void visualizar(float);
 float depositar();
 float retirar();
 float articulos(float);
-void eleccion_articulo(string, float, float);
+float eleccion_articulo(string, float, float);
 
 int main()
 {
@@ -47,7 +47,7 @@ int main()
                 break;
         }
     }
-        freopen ("recibo.txt", "w" , stdout);
+        freopen ("recibo.txt", "a" , stdout);
         cout<<"Transaccion: "<<transaccion<<"\n  Cantidad: "<<credito<<"\n";
         fclose (stdout);
     return 0;
@@ -90,19 +90,19 @@ float articulos(float credito)
         {
             case 1:
                 articulo = "aguacate";
-                eleccion_articulo(articulo, aguacate, credito);
+                credito = eleccion_articulo(articulo, aguacate, credito);
                 break;
             case 2:
                 articulo = "limon";
-                eleccion_articulo(articulo, limon, credito);
+                credito = eleccion_articulo(articulo, limon, credito);
                 break;
             case 3:
                 articulo = "sandia";
-                eleccion_articulo(articulo, sandia, credito);
+                credito = eleccion_articulo(articulo, sandia, credito);
                 break;
             case 4:
                 articulo = "platano";
-                eleccion_articulo(articulo, platano, credito);
+                credito =  eleccion_articulo(articulo, platano, credito);
                 break;
             case 5:
                 estado = 1;
@@ -115,12 +115,12 @@ float articulos(float credito)
 
 void escribir_recibo(float dato, string transaccion)
 {
-    freopen ("recibo.txt", "w" , stdout);
+    freopen ("recibo.txt", "a" , stdout);
         cout<<"Transaccion: "<<transaccion<<"\n  Cantidad: "<<dato<<"\n";
     fclose (stdout);
 }
 
-void eleccion_articulo(string articulo, float precio, float credito)
+float eleccion_articulo(string articulo, float precio, float credito)
 {
     int kilos;
     float compra;
@@ -135,4 +135,5 @@ void eleccion_articulo(string articulo, float precio, float credito)
     {
         cout<<"\n   Usted no cuenta con credito suficiente";
     }
+    return credito;
 }
